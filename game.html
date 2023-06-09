@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guessing Game</title>
+</head>
+<body>
+<button onclick="startGame()">Start</button>
+<script>
+    function startGame() {
+        var a = +prompt("nhập số a")
+        var b = +prompt("nhập số b")
+        if (Number.isNaN(a) || Number.isNaN(b)) {
+            alert("Vui lòng nhập số hợp lệ");
+            return;
+        }
+        var random = Math.floor(Math.random() * (b - a + 1)) + a;
+        var guessed = parseInt(prompt("Đoán số trong khoảng từ " + a + " đến " + b + ":"));
+
+        while (guessed !== random) {
+            if (isNaN(guessed)) {
+                alert("Vui lòng nhập số hợp lệ!");
+            } else if (guessed < random) {
+                guessed = parseInt(prompt("Số bạn đoán nhỏ hơn số cần tìm. Đoán lại:"));
+            } else {
+                guessed = parseInt(prompt("Số bạn đoán lớn hơn số cần tìm. Đoán lại:"));
+            }
+        }
+        alert("Chúc mừng! Bạn đã đoán đúng số " + random);
+    }
+</script>
+</body>
+</html>
